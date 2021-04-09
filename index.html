@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/index.css">
+	</head>
+	<body>
+		<div id="image" onclick="splashScreenOff()">
+			<div id="name_user">
+			</div>
+			<div id="date">
+			</div>
+		</div>
+		<header class="header">
+			<nav class="nav">
+				<div class="nav-links">
+					<div class="logo">
+						<a id="logo-link" href="#">
+							<img class="logo-img" src="pictures/js.png" alt="icon js" height="49px">
+						</a>
+					</div>
+					<a class="header__link" href="#area"> Площадь </a>
+					<a class="header__link" href="#strings-form"> Строки </a>
+					<a class="header__link" href="#array"> Массив </a>
+					<a class="header__link" href="#timer"> Таймер </a>
+					<a class="header__link" href="#test"> Тест </a>
+					<a class="header__link" onclick="splashScreenOn()"> Заставка </a>
+				</div>
+			</nav>
+		</header>
+
+
+		<main class="main">
+			<div class="welcome">
+				<p id="welcome-text">
+					Добро пожаловать в мир JavaScript!
+				</p>
+				<form class="welcome-form" name="welcome_form" method="get">
+					<label class="welcome-form-text" for="name">Пожалуйста, введите ваше имя</label>
+					<input type="text" name="name" id="name" placeholder="Имя" pattern="[А-Яа-яЁё]{2,40}">
+					<input class="button-submit" type="submit" name="submit" id="button__submit" formtarget="#">
+				</form>
+
+			</div>
+			<div class="welcome">
+				JavaScript - язык для составления скриптов, разработанный фирмой Netscape. С его помощью вы можете легко создавать интерактивные Web-страницы.
+
+				JavaScript поддерживает процедурный стиль, функциональный и даже объектно-ориентированный! Он динамически типизирован, что позволяет более гибко работать с типами данных
+			</div>
+			<form class="form" id='area'>
+				<p>
+					Вычисление площади
+				</p>
+				<label class="task" for="triangle_a"> Введите основание треугольника </label>
+				<input class="number" type="text" name="triangle_a" id="triangle_a" placeholder="Число" pattern="[0-9]{1,10}" required>
+				<label class="task" for="triangle_h"> Введите высоту треугольника </label>
+				<input class="number" type="text" name="triangle_h" id="triangle_h" placeholder="Число" pattern="[0-9]{1,10}" required>
+				<div class="button">
+					<button class="button-submit" type="submit"> Отправить</button>
+
+				</div>
+				<p id='area_result'> </p>
+			</form>
+			<form class="form" id="strings-form">
+				<p>
+					Сравнение строк
+				</p>
+				<label class="task" id="strings-text" for="string"> Введите первую строку </label>
+				<input type="text" name="string" id="string" placeholder="Строка" required>
+				<div class="button">
+					<button class="button-submit" type="submit"> Отправить</button>
+				</div>
+				<p id="strings_result">
+				</p>
+			</form>
+			<form class="form" id='array' onsubmit="return false">
+				<p>
+					Массив
+				</p>
+				<label class="task" id="array_num" for="num"> Введите элемент массива </label>
+				<input class="number" type="number" name="num" id="num" placeholder="Число" required>
+				<div class="button">
+					<button class="button-submit" onclick="ArrayAdd()"> Отправить</button>
+					<button class="button-cancel" onclick="ArrayD()"> Сбросить </button>
+				</div>
+				<p id='array_result'> </p>
+			</form>
+			<div id="time">
+				<form class="form" id='timer' onsubmit="return false">
+					<p>
+						Таймер
+					</p>
+					<p class="task"> Введите время </p>
+					<input class="number" type="number" max="24" min="0" name="hour" id="hour" placeholder="Часы" required>
+					<input class="number" type="number" max="60" min="0" name="min" id="min" placeholder="Минуты" required>
+					<input class="number" type="number" max="60" min="0" name="sec" id="sec" placeholder="Секунды" required>
+
+					<div class="button">
+						<button class="button-submit" id="timerStart" onclick="timer()"> Начать отсчет </button>
+						<button class="button-cancel" id="timerStop" onclick="timerEnd()"> Остановить </button>
+					</div>
+
+				</form>
+				<div id="timeCount">
+					0:0:0
+				</div>
+			</div>
+			<form class="form" id='test' onsubmit="return false">
+				<p>
+					Таймер
+				</p>
+				<p class="task">N1. Какая компания разработала JavaScript?</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q1" value="1"> Netscape </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q1" value="2"> Microsoft</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q1" value="3"> Lunascape</p>
+
+				<p class="task">N2. Что такое null?</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q2" value="1"> Not a Number </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q2" value="2"> 0</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q2" value="3"> Ничего</p>
+
+				<p class="task">
+					N3. Что делает оператор ===?
+				</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="1"> Сравнивает по ссылке, а не по значению. </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="2"> Сравнивает без приведения типа</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q3" value="3"> Нет такого оператора</p>
+
+				<p class="task">
+					N4.  Что такое localStorage?
+				</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="1"> Локальная сеть </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="2"> Личный кабинет</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q3" value="3"> Кеш-хранилище браузера</p>
+
+				<p class="task">
+					N5.  За что отвечает JavaScript?
+				</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="1"> Функционал сайта</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="2"> Текстовая разметка элементов </p>
+				<p class="test-a">
+					<input class="test-q" type="radio" name="q4" value="3"> Стили элементов
+				</p>
+				<div class="button">
+					<button class="button-submit" id="timerStart" onclick="timer()"> Итог </button>
+				</div>
+
+			</form>
+
+		</main>
+		<script src="js/script.js"></script>
+	</body>
+</html>
