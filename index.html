@@ -111,43 +111,82 @@
 					Таймер
 				</p>
 				<p class="task">N1. Какая компания разработала JavaScript?</p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q1" value="1"> Netscape </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q1" value="a"> Netscape </p>
 				<p class="test-a"> <input class="test-q" type="radio" name="q1" value="2"> Microsoft</p>
 				<p class="test-a"><input class="test-q" type="radio" name="q1" value="3"> Lunascape</p>
 
 				<p class="task">N2. Что такое null?</p>
 				<p class="test-a"> <input class="test-q" type="radio" name="q2" value="1"> Not a Number </p>
 				<p class="test-a"> <input class="test-q" type="radio" name="q2" value="2"> 0</p>
-				<p class="test-a"><input class="test-q" type="radio" name="q2" value="3"> Ничего</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q2" value="a"> Ничего</p>
 
 				<p class="task">
 					N3. Что делает оператор ===?
 				</p>
 				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="1"> Сравнивает по ссылке, а не по значению. </p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="2"> Сравнивает без приведения типа</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="a"> Сравнивает без приведения типа</p>
 				<p class="test-a"><input class="test-q" type="radio" name="q3" value="3"> Нет такого оператора</p>
 
 				<p class="task">
 					N4.  Что такое localStorage?
 				</p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="1"> Локальная сеть </p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q3" value="2"> Личный кабинет</p>
-				<p class="test-a"><input class="test-q" type="radio" name="q3" value="3"> Кеш-хранилище браузера</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="1"> Локальная сеть </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="2"> Личный кабинет</p>
+				<p class="test-a"><input class="test-q" type="radio" name="q4" value="a"> Кеш-хранилище браузера</p>
 
 				<p class="task">
 					N5.  За что отвечает JavaScript?
 				</p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="1"> Функционал сайта</p>
-				<p class="test-a"> <input class="test-q" type="radio" name="q4" value="2"> Текстовая разметка элементов </p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q5" value='a'> Функционал сайта</p>
+				<p class="test-a"> <input class="test-q" type="radio" name="q5" value="2"> Текстовая разметка элементов </p>
 				<p class="test-a">
-					<input class="test-q" type="radio" name="q4" value="3"> Стили элементов
+					<input class="test-q" type="radio" name="q5" value="3"> Стили элементов
 				</p>
 				<div class="button">
-					<button class="button-submit" id="timerStart" onclick="timer()"> Итог </button>
+					<button class="button-submit" id="timerStart" onclick="resultTest()"> Итог </button>
 				</div>
+				<p id="resTest"></p>
 
 			</form>
 
+			<form class="form" id='array_strings' onsubmit="return false">
+				<p>
+					Массив строк
+				</p>
+				<label class="task" id="array_str" for="arr_str"> Введите строку </label>
+				<input type="text" name="arr_str" id="arr_str" placeholder="Строка" required>
+				<div class="button">
+					<button class="button-submit" onclick="arrayAddStr()"> Отправить</button>
+					<button class="button-cancel" onclick="arrayDStr()"> Сбросить </button>
+				</div>
+				<p id='array_res_str'> </p>
+			</form>
+			<form class="form" id='often_char' onsubmit="return false">
+				<p>
+					Частый символ
+				</p>
+				<label class="task" for="str_ch"> Введите строку </label>
+				<input type="text" name="str_ch" id="str_ch" placeholder="Строка" required>
+				<div class="button">
+					<button class="button-submit" onclick="oftenChar()"> Отправить</button>
+					<button class="button-submit" id="change_char" onclick="changeChar()"> Заменить символ</button>
+				</div>
+				<p id='char_res'> </p>
+				<p id='char_change'> </p>
+
+			</form>
+			<form class="form" id="strings-form-an">
+				<p>
+					Анаграммы
+				</p>
+				<label class="task" id="task_an" for="string"> Введите первую строку </label>
+				<input type="text" name="string_a" id="string_a" placeholder="Строка" required>
+				<div class="button">
+					<button class="button-submit" type="submit"> Отправить</button>
+				</div>
+				<p id="strings_result_a">
+				</p>
+			</form>
 		</main>
 		<script src="js/script.js"></script>
 	</body>

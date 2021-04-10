@@ -85,6 +85,11 @@ button, .button-submit{
 	width: 136px;
 	font-size: 18px;
 	background-color: #F7E018;
+	margin-right: 30px;
+}
+.button{
+	display: flex;
+	flex-direction: row;
 }
 button:hover, .button-submit:hover{
 	background-color: #f7e0189c;
@@ -128,7 +133,7 @@ input, button{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-#string{
+#string, #arr_str, #str_ch, #string_a {
 	width: 500px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -184,4 +189,8 @@ input, button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+#change_char{
+	width: 200px;
+	display: none;
 }

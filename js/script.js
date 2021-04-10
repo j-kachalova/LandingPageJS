@@ -1,3 +1,4 @@
+
 let name;
 document.forms.welcome_form.onsubmit = function () {
   name = this.name.value;
@@ -13,7 +14,7 @@ document.forms.welcome_form.onsubmit = function () {
 document.getElementById('area').onsubmit = function() {
 	let baseT = this.triangle_a.value;
 	let heightT = this.triangle_h.value;
-	let areaT = baseT*heightT;
+	let areaT = baseT*heightT/2;
 	console.log(areaT);
   let res=document.getElementById('area_result');
   res.innerText = areaT;
@@ -44,7 +45,7 @@ document.getElementById('strings-form').onsubmit = function() {
  	return false;
 };
 
-let i = 0;
+
 let max, min;
 let resArray = '';
 let resOutput = document.getElementById('array_result');
@@ -57,12 +58,10 @@ function ArrayAdd() {
     if (numArray < min || min == null) min = numArray;
     resArray += '      ' + numArray;
     resOutput.innerText = resArray + "\n Max: " + max + " Min: " +min;
-    i++;
     return false;
 }
 
 function ArrayD() {
-    i = 0;
     max = null;
     min = null;
     resArray = '';
@@ -89,7 +88,7 @@ function timer() {
         if (Timer1.h > 0 || Timer1.m > 0 || Timer1.s > 0) setTimeout(pusk, 1000);
         else timeRes.innerText = `0:0:0`;
     }
-    //Конструктор
+
     function Count() {
         if (minT == 0 && secT == 0 && hourT > 0) {
             hourT--;
@@ -152,5 +151,151 @@ function splashScreenOff() {
     document.getElementById("image").style.display = "none";
 }
 
+function resultTest() {
+    let result = document.getElementById('resTest');
+    let score = 0;
+    check();
+    result.innerText = score + "/5 правильных ответов";
+
+    function check() {
+        let arr = [];
+        arr[0] = document.getElementsByName('q1');
+        arr[1] = document.getElementsByName('q2');
+        arr[2] = document.getElementsByName('q3');
+        arr[3] = document.getElementsByName('q4');
+        arr[4] = document.getElementsByName('q5');
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j].checked && arr[i][j].value == 'a') {
+                    score++;
+                    break;
+                }
+            }
+        }
+
+    }
+    
+}
+
+let maxStr='';
+let resString = '';
+let resOutputStr = document.getElementById('array_res_str');
+function arrayAddStr(){
+    let strArr = document.getElementById('arr_str').value;
+    if (strArr.length > maxStr.length) {
+        maxStr = strArr;
+        console.log(maxStr);
+    }
+    resString += strArr + "\n";
+    resOutputStr.innerText = resString + "Самая длинная строка: " + maxStr;
+    document.getElementById('arr_str').value = "";
+    return false;
+}
+function arrayDStr() {
+    maxStr = '';
+    resString ='';
+    resOutputStr.innerText = "";
+    document.getElementById('arr_str').value = "";
+}
+
+let strChar;
+let maxChar;
+function oftenChar() {
+    strChar = document.getElementById("str_ch").value;
+    let max = 0;
+    maxChar = '';
+    strChar.split('').forEach(function (char) {
+        if (strChar.split(char).length > max) {
+            max = strChar.split(char).length;
+            maxChar = char;
+            console.log(max);
+            console.log(char);
+            console.log(strChar.split(char));
+        }
+    });
+    document.getElementById("char_res").innerText = strChar + '\n Самый частый символ в строке:' + maxChar;
+    document.getElementById("change_char").style.display = "block";
+    document.getElementById("char_change").innerText = '';
+};
+function changeChar() {
+    let ch = prompt("Введите один символ");
+    while (ch.length != 1) {
+        ch = prompt("Введите один символ");
+    }
+    document.getElementById("char_change").innerText = "Результат: " + сhangeStr(ch);
+}
+function сhangeStr(new_symbol) {
+    let arr = toArray(strChar);
+
+    for (let i = 0; i < arr.length; i++) {
+       if (arr[i] == maxChar) {
+           arr[i] = new_symbol;
+           console.log(arr);
+       }
+    }
+    return arr.join('');
+  
+}
+function toArray(str) {
+    let arr = [];
+    for (let i = 0; i < str.length; i++) {
+        arr[i] = str[i];
+    }
+
+    return arr;
+}
 
 
+let strA1;
+let strA2;
+let strResA = document.getElementById('strings_result_a');
+document.getElementById('strings-form-an').onsubmit = function () {
+    let stringText = this.string_a.value;
+    let text = document.getElementById('task_an');
+    if (strA1 == null) {
+        text.innerText = 'Введите вторую строку';
+        strA1 = stringText;
+        this.string_a.value = "";
+        if (strResA.innerText != null) strResA.innerText = null;
+    }
+    else {
+        strA2 = stringText;
+        text.innerText = 'Введите первую строку';
+        if (anagramma(strA1, strA2)) strResA.innerText = "Строки являются аннаграммами";
+        else strResA.innerText = "Строки не являются аннаграммами";
+        strA1 = null;
+        strA2 = null;
+        this.string_a.value = "";
+    }
+    return false;
+};
+
+function anagramma(strA1, strA2) {
+    if (strA1.length != strA2.length) return false;
+    if (compare(strA1, strA2)) return false;
+    let arr1 = sortArray(strA1);
+    let arr2 = sortArray(strA2);
+
+    if (compare(arr1, arr2)) return true;
+    else return false;
+}
+function sortArray(strSort) {
+    let arr = new Array();
+    for (let i = 0; i < strSort.length; i++) {
+        arr[i] = strSort[i];
+    }
+    arr.sort();
+    return arr;
+}
+
+function compare(arrComp1, arrComp2) {
+
+    for (let i = 0; i < arrComp1.length; i++) {
+        if (arrComp1[i] != arrComp2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
